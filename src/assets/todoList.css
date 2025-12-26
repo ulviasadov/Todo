@@ -1,0 +1,79 @@
+:root{
+    --main-gray: rgb(192, 192, 192);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(38, 41, 51);
+}
+
+.main-container{
+    display: flex;
+    padding: 80px 0;
+    gap: 20px;
+}
+
+.todo-container{
+    width: 240px;
+    height: max-content;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+.todo-header{
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.todo-body{
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 5px 2px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.todo-header, .todo-body, .button {
+    transition-duration: 0.2s;
+}
+
+.button-container{
+    margin: 2px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 3px;
+}
+
+.button{
+    padding: 3px;
+    border: 1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.button-delete{
+    color: white;
+    background-color: rgb(156, 22, 22);
+}
+
+/* HOVER */
+.todo-header:hover{
+    background-color: var(--main-gray);
+}
+
+.todo-body:hover{
+    background-color: var(--main-gray);
+}
+
+.button:hover{
+    filter: brightness(0.7);
+}

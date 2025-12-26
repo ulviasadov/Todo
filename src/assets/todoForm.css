@@ -1,0 +1,35 @@
+.form-container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.form-input{
+    width: 100%;
+    height: 3em;
+    outline: none;
+    padding: 10px;
+}
+
+.input-title{
+    border: none;
+    border-radius: 3px 3px 0 0;
+}
+
+.input-body{
+    border: none;
+}
+
+.form-create-button{
+    border: none;
+    border-radius: 0 0 3px 3px;
+    height: 2em;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(38, 95, 252);
+}
+
+.form-create-button:hover{
+    background-color: rgba(38, 95, 252, 0.7);
+}

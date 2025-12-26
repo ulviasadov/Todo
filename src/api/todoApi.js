@@ -18,3 +18,13 @@ export async function createTodo(title) {
 
     if (!res.ok) throw new Error("Create failed");
 }
+
+export async function deleteTodo(id) {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id })
+    });
+
+    if (!res.ok) throw new Error("Todo not founded!");
+}
