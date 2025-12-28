@@ -9,40 +9,36 @@
 }
 
 body{
-    background-color: rgb(38, 41, 51);
+    background-color: rgb(219, 219, 219);
 }
 
-.main-container{
+.todo-container{
     display: flex;
     padding: 80px 0;
     gap: 20px;
 }
 
-.todo-container{
+.todo{
     width: 240px;
     height: max-content;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
-    border: 1px solid black;
 }
 
 .todo-header{
     text-align: center;
-    border: 1px solid black;
     border-radius: 3px;
     margin: 2px;
-    cursor: pointer;
 }
 
 .todo-body{
-    border: 1px solid black;
+    border: 1px solid rgb(182, 182, 182);
     border-radius: 3px;
     margin: 5px 2px;
     padding: 5px;
-    cursor: pointer;
 }
 
-.todo-header, .todo-body, .button {
+.button {
     transition-duration: 0.2s;
 }
 
@@ -55,9 +51,14 @@ body{
 
 .button{
     padding: 3px;
-    border: 1px solid black;
+    border: none;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.button-edit{
+    color: white;
+    background-color: rgb(38, 95, 252);
 }
 
 .button-delete{
@@ -66,14 +67,6 @@ body{
 }
 
 /* HOVER */
-.todo-header:hover{
-    background-color: var(--main-gray);
-}
-
-.todo-body:hover{
-    background-color: var(--main-gray);
-}
-
 .button:hover{
     filter: brightness(0.7);
 }

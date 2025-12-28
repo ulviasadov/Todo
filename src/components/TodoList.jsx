@@ -1,8 +1,11 @@
-import { deleteTodo, getTodos } from "../api/todoApi"
+import { getTodos } from "../api/todoApi"
 import "../assets/todoList.css";
 import { useEffect, useState } from "react";
 import TodoForm from "./TodoForm";
-import TodoPage from "../pages/TodoPage";
+import Search from "./Search";
+import Todo from "./Todo";
+import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 const staticData = [
     { id: "1", title: "Header1", bodyText: "NeseNeseNese1" },
@@ -13,11 +16,12 @@ const staticData = [
 export default function TodoList() {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [searchValue, setSearchValue] = useState("");
 
     useEffect(() => {
         async function fetchTodos() {
             try {
-                const todos = await getTodos();
+                const todos = await getTodos(searchValue);
 
                 if (!todos || todos.length === 0) {
                     setData(staticData);
@@ -36,25 +40,16 @@ export default function TodoList() {
         }
 
         fetchTodos();
-    }, [data])
+    }, [data, searchValue])
 
     return (
         <div className="main-container">
+            <Search setSearchValue={setSearchValue} />
             {isLoading
-                ? <div>Loading...</div>
-                : <>
-                    {data.map(todo => (
-                        <div key={todo.id} className="todo-container">
-                            <h1 className="todo-header">{todo.title}</h1>
-                            <h3 className="todo-body">{todo.bodyText}</h3>
-                            <div className="button-container">
-                                <button className="button button-delete" onClick={() => deleteTodo(todo.id)}>Delete</button>
-                            </div>
-                        </div>
-                    ))}
-                    <TodoForm setData={setData} />
-                </>
+                ? <Loading />
+                : <Todo data={data} />
             }
+            <TodoForm setData={setData} />
         </div>
     )
 }

@@ -1,20 +1,15 @@
 import { useState } from "react";
 import "../assets/todoForm.css";
+import { createTodo } from "../api/todoApi";
 
 export default function TodoForm({ setData }) {
   const [title, setTitle] = useState("");
   const [bodyText, setBodyText] = useState("");
 
   async function handleAddTodo() {
-    const res = await fetch("http://localhost:5125/api/Todo",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: title, bodyText: bodyText })
-      }
-    )
-
+    const res = await createTodo(title, bodyText)
     const newData = await res.json();
+
     setData(prev => [...prev, newData]);
   }
 
@@ -23,7 +18,7 @@ export default function TodoForm({ setData }) {
 
     if (title.trim() === "") return;
 
-    handleAddTodo(title, bodyText);
+    handleAddTodo();
     setTitle("");
     setBodyText("");
   }
